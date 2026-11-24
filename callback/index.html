@@ -1,0 +1,18 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Returning to Tesla Key…</title>
+<!-- Tesla redirects here after sign-in (?code=…&state=…). Hand it to the app; nothing is stored or sent elsewhere. -->
+<body style="font:17px -apple-system,system-ui,sans-serif;text-align:center;margin-top:4em;color:#222">
+<p id="m">Returning to Tesla Key…</p>
+<p><a id="a" href="#">Tap here if nothing happens</a></p>
+<script>
+  var target = "teslakey://oauth/callback" + location.search;
+  document.getElementById("a").href = target;
+  if (location.search.indexOf("code=") < 0 && location.search.indexOf("error=") < 0) {
+    document.getElementById("m").textContent = "No sign-in result in this link.";
+  } else {
+    location.replace(target);
+  }
+</script>
+</body>
